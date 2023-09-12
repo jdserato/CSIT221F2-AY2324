@@ -3,7 +3,27 @@
 using namespace std;
 
 int main() {
+	cout << "Neg 1 is " << (size_t) -13 << endl;
 	ArrayList* list = new ArrayList();
+	int n;
+	char op;
+	do {
+		cin >> op;
+		switch (op) {
+			case 'a':
+				cin >> n;
+				list->add(n);
+				break;
+			case 'p':
+				list->print();
+				break;
+			case 'r':
+				cin >> n;
+				list->remove(n);
+				break;
+		}
+		
+	} while (op != 'x');
 	list->add(13);
 	list->print();
 	list->add(7);

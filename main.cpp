@@ -2,7 +2,16 @@
 #include "arraylist.h"
 using namespace std;
 
+struct foo {
+	int* a;
+	char b, ch2;
+	int i;
+	
+};
+
 int main() {
+	cout << sizeof(foo) << endl;
+	
 	cout << "Neg 1 is " << (size_t) -13 << endl;
 	ArrayList* list = new ArrayList();
 	int n;
@@ -20,6 +29,10 @@ int main() {
 			case 'r':
 				cin >> n;
 				list->remove(n);
+				break;
+			case 'R':
+				cin >> n;
+				cout << list->removeAll(n) << endl;
 				break;
 		}
 		
@@ -42,3 +55,5 @@ int main() {
 	list->print();
 	return 0;
 }
+
+

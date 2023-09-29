@@ -8,7 +8,22 @@ class ArrayList : public List {
 	int count = 0;
 	int capacity;
 	
+	int removeOne(int num) {
+		for (int i = 0; i < count; i++) {
+			if (array[i] == num) {
+                for (int j = i; j < count-1; j++) {
+                	array[j] = array[j+1];
+				}
+				array[count-1] = 0;
+				count--;
+				return i+1;
+			}
+		}
+		return -1;
+	}
+	
 	public:
+	
 	ArrayList() {
 		capacity = 5;
 		array = (int*) calloc( capacity , sizeof(int) );
@@ -50,6 +65,21 @@ class ArrayList : public List {
 			}
 		}
 		return -1;
+	}
+	int removeAll(int num) {
+		int ctr = 0;
+		while (removeOne(num) != -1) {
+			ctr++;
+		}
+		
+		if (capacity > 5 && count <= 0.6 * capacity) {
+			capacity *= 0.8;
+			if (capacity < 5) {
+				capacity = 5;
+			}
+			array = (int*) realloc(array, capacity * sizeof(int) );
+		}
+		return ctr;
 	}
 	// TIME REMAINING: 00:00 minute 
 	void print() {

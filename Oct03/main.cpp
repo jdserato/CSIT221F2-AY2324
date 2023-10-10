@@ -4,7 +4,7 @@
 
 int main(int argc, char** argv) {
 	LinkedList* list = new LinkedList();
-	int num;
+	int num, pos;
 	char op;
 	do {
 		cout << "Op: ";
@@ -17,6 +17,14 @@ int main(int argc, char** argv) {
 			case 'l':
 				cin >> num;
 				list->addLast(num);
+				break;
+			case '@':
+				cin >> num >> pos;
+				list->addAt(num, pos);
+				break;
+			case 'r':
+				cin >> num;
+				cout << "Remove pos " << list->remove(num) << endl;
 				break;
 			case 'F':
 				list->removeFirst();

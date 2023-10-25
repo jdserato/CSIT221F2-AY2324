@@ -1,58 +1,41 @@
 #include <iostream>
-#include "arraylist.h"
+#include "arraystack.h"
 using namespace std;
 
-struct foo {
-	int* a;
-	char b, ch2;
-	int i;
-	
-};
-
 int main() {
-	cout << sizeof(foo) << endl;
-	
-	cout << "Neg 1 is " << (size_t) -13 << endl;
-	ArrayList* list = new ArrayList();
+	Stack* stack = new ArrayStack();
 	int n;
 	char op;
 	do {
+		cout << "Op: ";
 		cin >> op;
 		switch (op) {
 			case 'a':
 				cin >> n;
-				list->add(n);
+				stack->push(n);
 				break;
 			case 'p':
-				list->print();
+				stack->print();
 				break;
 			case 'r':
-				cin >> n;
-				list->remove(n);
+				cout << "Removed " << stack->pop() << endl;
 				break;
-			case 'R':
-				cin >> n;
-				cout << list->removeAll(n) << endl;
+			case 't':
+				cout << "Top: " << stack->top() << endl;
+				break;
+			case 's':
+				cout << "Size: " << stack->size() << endl;
+				break;
+			case '?':
+				cout << "IsEmpty? " << stack->isEmpty() << endl;
+				break;
+			case 'x':
+				cout << "Exiting";
 				break;
 		}
 		
 	} while (op != 'x');
-	list->add(13);
-	list->print();
-	list->add(7);
-	list->print();
-	list->add(4);
-	list->print();
-	list->add(25);
-	list->print();
-	list->add(34);
-	list->print();
-	list->add(17);
-	list->print();
-	list->remove(4);
-	list->print();
-	list->add(27);
-	list->print();
+	
 	return 0;
 }
 

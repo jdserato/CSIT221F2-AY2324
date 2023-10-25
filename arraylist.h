@@ -29,14 +29,15 @@ class ArrayList : public List {
 		array = (int*) calloc( capacity , sizeof(int) );
 		cout << "Address of our array is " << array << endl;
 	}
+	
+	void insertLast(int num) {
+		add(num);
+	}
 		
 	void add(int num) {
-		cout << "Trying to add " << num << endl;
 		if (count >= capacity) {
 			capacity *= 1.5;
 			array = (int*) realloc(array, capacity * sizeof(int) );
-			cout << "Capacity: " << capacity << endl;
-		cout << "Address of our array is " << array << endl;
 		} 
 		array[count] = num;
 		count++;
@@ -66,6 +67,21 @@ class ArrayList : public List {
 		}
 		return -1;
 	}
+	
+	int removeLast() {
+		int tmp = array[count-1];
+		array[count-1] = 0;
+		count--;
+		if (capacity > 5 && count <= (2.0/3) * capacity) {
+			capacity *= 0.75;
+			if (capacity < 5) {
+				capacity = 5;
+			}
+			array = (int*) realloc(array, capacity * sizeof(int) );
+		}
+		return tmp;
+	}
+	
 	int removeAll(int num) {
 		int ctr = 0;
 		while (removeOne(num) != -1) {
@@ -81,6 +97,15 @@ class ArrayList : public List {
 		}
 		return ctr;
 	}
+	
+	int get(int pos){
+		return array[pos-1];
+	}
+	
+	int size() {
+		return count;
+	}
+	
 	// TIME REMAINING: 00:00 minute 
 	void print() {
 		cout << "Size: " << count << endl;

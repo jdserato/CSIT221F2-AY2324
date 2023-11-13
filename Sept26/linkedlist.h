@@ -29,6 +29,28 @@ public:
 		addLast(num);
 	}
 	
+	int removeFirst() {
+		// Step 1: Check first if naa kay head
+		if (!head) {
+			return -1;
+		}
+		// Step 2: Store into temp
+		int tmp = head->elem;
+		// Step 3: Have another pointer
+		node* n = head;
+		// Step 4: Set head to next
+		head = head->next;
+		
+		// Step 5: Free prev head 
+		free(n);
+		size--;
+		if (size == 0) {
+			tail = head;
+		}
+		// Step 6: Return tmp
+		return tmp;
+	}
+	
 	int remove(int num) {
 	
 	}
@@ -41,6 +63,10 @@ public:
 			ctr++;
 		}
 		return curr->elem;
+	}
+	
+	int getSize() {
+		return size;
 	}
 	
 	void print() {

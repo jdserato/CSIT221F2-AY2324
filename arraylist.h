@@ -97,6 +97,12 @@ class ArrayList : public List {
 		}
 		return ctr;
 	}
+
+	void swap(int ind1, int ind2) {
+		int temp = array[ind1];
+		array[ind1] = array[ind2];
+		array[ind2] = temp;
+	}
 	
 	int get(int pos){
 		return array[pos-1];
@@ -109,7 +115,7 @@ class ArrayList : public List {
 	// TIME REMAINING: 00:00 minute 
 	void print() {
 		cout << "Size: " << count << endl;
-		for (int i = 0; i < capacity; i++) {
+		for (int i = 0; i < count; i++) {
 			cout << array[i] << ", ";
 		}
 		cout << endl;
